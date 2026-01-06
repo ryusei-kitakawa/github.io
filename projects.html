@@ -66,7 +66,7 @@
                   </p>
 
                   <div class="mb-4">
-                  <h4 class="fw-bolder mb-2">Dataset Overview</h4>
+                  <h4 class="fw-bolder mb-2">データ設定概要</h4>
                   <p class="text-muted mb-0">
                     2026年1月4日から1月6日までの約3日間、GCP上に構築した Cowrie Honeypot を稼働させ、
                     SSH に関する実攻撃ログを収集・分析しました。
@@ -109,7 +109,7 @@
                   <div class="row g-4">
                     <div class="col-md-6">
                       <div class="border rounded-4 bg-white p-3 h-100">
-                        <p class="small text-muted mb-2">Dashboard（攻撃一覧 / 推移）</p>
+                        <p class="small text-muted mb-2">ダッシュボード（攻撃一覧 / 推移）</p>
                         <img src="assets/project-cowrie-dashboard.png" class="img-fluid rounded-3" alt="Splunk dashboard screenshot">
                         <p class="small text-muted mt-2 mb-0">
                           画像ファイル例：<code>assets/project-cowrie-dashboard.png</code>
@@ -118,7 +118,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="border rounded-4 bg-white p-3 h-100">
-                        <p class="small text-muted mb-2">Architecture（構成図）</p>
+                        <p class="small text-muted mb-2">システム構成図</p>
                         <img src="assets/project-architecture.png" class="img-fluid rounded-3" alt="architecture diagram">
                         <p class="small text-muted mt-2 mb-0">
                           画像ファイル例：<code>assets/project-architecture.png</code>
@@ -130,7 +130,7 @@
                   <hr class="my-5" />
 
                   <!-- Findings -->
-                  <h4 class="fw-bolder mb-3">Key Findings</h4>
+                  <h4 class="fw-bolder mb-3">主な分析結果</h4>
                   <ul class="text-muted">
                     <li>攻撃元IPの上位は特定の時間帯に集中し、短時間のスパイクが発生</li>
                     <li>ユーザ名・パスワード試行は辞書型のパターンが多く、同一セットが繰り返される</li>
@@ -140,7 +140,7 @@
                   <hr class="my-5" />
 
                   <!-- SPL -->
-                  <h4 class="fw-bolder mb-3">Detection SPL（抜粋）</h4>
+                  <h4 class="fw-bolder mb-3">検知用SPL（抜粋）</h4>
                   <p class="text-muted mb-4">
                     説明付きでSPLを載せると“分かってる感”が出ます。まずは3本で十分です。
                   </p>
@@ -169,7 +169,7 @@
 
                   <hr class="my-5" />
                   <!-- Links -->
-                  <h4 class="fw-bolder mb-3">Repro / Links</h4>
+                  <h4 class="fw-bolder mb-3">再現手順・関連リンク</h4>
                   <ul class="text-muted mb-0">
                     <li>GitHub（手順・構成・SPLまとめ）：<a href="https://github.com/ryusei-kitagawa" target="_blank" rel="noopener">https://github.com/ryusei-kitagawa</a></li>
                     <li>データの扱い：攻撃元IP等は必要に応じてマスクして共有</li>
@@ -181,7 +181,7 @@
               <!-- Coming soon / Next projects -->
               <div class="card shadow border-0 rounded-4">
                 <div class="card-body p-5">
-                  <h2 class="fw-bolder mb-3">Next</h2>
+                  <h2 class="fw-bolder mb-3">今後の展開</h2>
                   <p class="text-muted mb-0">
                     次は、Splunk上で「攻撃一覧の自動分類」「アラート（閾値・急増検知）」「Suricataログとの相関分析」を追加予定です。
                   </p>
