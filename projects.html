@@ -153,13 +153,12 @@
                   <div class="mb-4">
                     <p class="fw-bolder mb-2">3) 侵入後コマンド（観測できる場合）</p>
                     <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=YOUR_INDEX sourcetype=YOUR_COWRIE_SOURCETYPE eventid="cowrie.command.input"
-| stats count as hits by input
-| sort - hits
-| head 30</code></pre>
+                                                                              | stats count as hits by input
+                                                                              | sort - hits
+                                                                              | head 30</code></pre>
                   </div>
 
                   <hr class="my-5" />
-
                   <!-- Links -->
                   <h4 class="fw-bolder mb-3">Repro / Links</h4>
                   <ul class="text-muted mb-0">
