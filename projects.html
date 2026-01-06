@@ -1,100 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Modern Business - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Custom Google font-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body class="d-flex flex-column h-100 bg-light">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
-                <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Start Bootstrap</span></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>                        </ul>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Projects | Security Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
+
+  <body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+        <div class="container px-5">
+          <a class="navbar-brand fw-bolder text-primary" href="index.html">Ryusei | Security Portfolio</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-bolder">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link active" href="projects.html">Projects</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Header -->
+      <header class="py-5">
+        <div class="container px-5 mb-5">
+          <div class="text-center">
+            <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projects</span></h1>
+            <p class="lead text-muted mt-3 mb-0">
+              実攻撃ログをもとに、分析 → 可視化 → 検知（SPL）まで落とし込むことを重視しています。
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="pb-5">
+        <div class="container px-5">
+          <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 col-xl-9 col-xxl-8">
+
+              <!-- Featured Project -->
+              <div class="card shadow border-0 rounded-4 mb-5">
+                <div class="card-body p-5">
+                  <div class="d-flex align-items-center mb-3">
+                    <span class="badge bg-primary me-2">Featured</span>
+                    <h2 class="fw-bolder mb-0">Cowrie Honeypot × Splunk 攻撃ログ分析</h2>
+                  </div>
+
+                  <p class="text-muted mb-4">
+                    GCP上のCowrieで収集したSSH/Telnet攻撃ログをSplunkに集約し、攻撃傾向の可視化と検知クエリ（SPL）を作成しました。
+                    “攻撃の手法”だけでなく“目的”に注目し、再現性のある分析に落とし込みます。
+                  </p>
+
+                  <!-- Project Summary -->
+                  <div class="row g-4">
+                    <div class="col-md-6">
+                      <div class="p-4 bg-light rounded-4 h-100">
+                        <h5 class="fw-bolder">目的</h5>
+                        <ul class="text-muted mb-0">
+                          <li>実攻撃ログの収集と傾向分析（時間帯 / 攻撃元 / 試行内容）</li>
+                          <li>検知に使えるSPLの作成（可視化・ランキング・異常検知）</li>
+                          <li>成果物としてダッシュボード化</li>
+                        </ul>
+                      </div>
                     </div>
+                    <div class="col-md-6">
+                      <div class="p-4 bg-light rounded-4 h-100">
+                        <h5 class="fw-bolder">構成</h5>
+                        <ul class="text-muted mb-0">
+                          <li>Honeypot：Cowrie（GCP）</li>
+                          <li>転送：Universal Forwarder（またはHTTP Event Collector）</li>
+                          <li>分析：Splunk Enterprise（Dashboard / SPL）</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr class="my-5" />
+
+                  <!-- Evidence / Screenshots -->
+                  <h4 class="fw-bolder mb-3">成果物</h4>
+                  <p class="text-muted">
+                    ※スクショを置く場所です。画像を用意したら <code>assets/</code> に入れてパスを書き換えるだけでOK。
+                  </p>
+
+                  <div class="row g-4">
+                    <div class="col-md-6">
+                      <div class="border rounded-4 bg-white p-3 h-100">
+                        <p class="small text-muted mb-2">Dashboard（攻撃一覧 / 推移）</p>
+                        <img src="assets/project-cowrie-dashboard.png" class="img-fluid rounded-3" alt="Splunk dashboard screenshot">
+                        <p class="small text-muted mt-2 mb-0">
+                          画像ファイル例：<code>assets/project-cowrie-dashboard.png</code>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="border rounded-4 bg-white p-3 h-100">
+                        <p class="small text-muted mb-2">Architecture（構成図）</p>
+                        <img src="assets/project-architecture.png" class="img-fluid rounded-3" alt="architecture diagram">
+                        <p class="small text-muted mt-2 mb-0">
+                          画像ファイル例：<code>assets/project-architecture.png</code>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <hr class="my-5" />
+
+                  <!-- Findings -->
+                  <h4 class="fw-bolder mb-3">Key Findings</h4>
+                  <ul class="text-muted">
+                    <li>攻撃元IPの上位は特定の時間帯に集中し、短時間のスパイクが発生</li>
+                    <li>ユーザ名・パスワード試行は辞書型のパターンが多く、同一セットが繰り返される</li>
+                    <li>侵入後は <code>wget/curl</code> 系のコマンドやシェル実行を狙う試行が見られる（※観測できた場合に記載）</li>
+                  </ul>
+
+                  <hr class="my-5" />
+
+                  <!-- SPL -->
+                  <h4 class="fw-bolder mb-3">Detection SPL（抜粋）</h4>
+                  <p class="text-muted mb-4">
+                    説明付きでSPLを載せると“分かってる感”が出ます。まずは3本で十分です。
+                  </p>
+
+                  <div class="mb-4">
+                    <p class="fw-bolder mb-2">1) 日別の攻撃イベント推移</p>
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=YOUR_INDEX sourcetype=YOUR_COWRIE_SOURCETYPE
+| timechart span=1d count as events</code></pre>
+                  </div>
+
+                  <div class="mb-4">
+                    <p class="fw-bolder mb-2">2) 攻撃元IP Top 20</p>
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=YOUR_INDEX sourcetype=YOUR_COWRIE_SOURCETYPE
+| stats count as events by src_ip
+| sort - events
+| head 20</code></pre>
+                  </div>
+
+                  <div class="mb-4">
+                    <p class="fw-bolder mb-2">3) 侵入後コマンド（観測できる場合）</p>
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=YOUR_INDEX sourcetype=YOUR_COWRIE_SOURCETYPE eventid="cowrie.command.input"
+| stats count as hits by input
+| sort - hits
+| head 30</code></pre>
+                  </div>
+
+                  <hr class="my-5" />
+
+                  <!-- Links -->
+                  <h4 class="fw-bolder mb-3">Repro / Links</h4>
+                  <ul class="text-muted mb-0">
+                    <li>GitHub（手順・構成・SPLまとめ）：<a href="https://github.com/ryusei-kitagawa" target="_blank" rel="noopener">https://github.com/ryusei-kitagawa</a></li>
+                    <li>データの扱い：攻撃元IP等は必要に応じてマスクして共有</li>
+                    <li>今後：Suricata連携、GeoIPで国別傾向、アラート化（Saved Search）</li>
+                  </ul>
                 </div>
-            </nav>
-            <!-- Projects Section-->
-            <section class="py-5">
-                <div class="container px-5 mb-5">
-                    <div class="text-center mb-5">
-                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projects</span></h1>
-                    </div>
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-lg-11 col-xl-9 col-xxl-8">
-                            <!-- Project Card 1-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 class="fw-bolder">Project Name 1</h2>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius at enim eum illum aperiam placeat esse? Mollitia omnis minima saepe recusandae libero, iste ad asperiores! Explicabo commodi quo itaque! Ipsam!</p>
-                                        </div>
-                                        <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Project Card 2-->
-                            <div class="card overflow-hidden shadow rounded-4 border-0">
-                                <div class="card-body p-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="p-5">
-                                            <h2 class="fw-bolder">Project Name 2</h2>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius at enim eum illum aperiam placeat esse? Mollitia omnis minima saepe recusandae libero, iste ad asperiores! Explicabo commodi quo itaque! Ipsam!</p>
-                                        </div>
-                                        <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+
+              <!-- Coming soon / Next projects -->
+              <div class="card shadow border-0 rounded-4">
+                <div class="card-body p-5">
+                  <h2 class="fw-bolder mb-3">Next</h2>
+                  <p class="text-muted mb-0">
+                    次は、Splunk上で「攻撃一覧の自動分類」「アラート（閾値・急増検知）」「Suricataログとの相関分析」を追加予定です。
+                  </p>
                 </div>
-            </section>
-            <!-- Call to action section-->
-            <section class="py-5 bg-gradient-primary-to-secondary text-white">
-                <div class="container px-5 my-5">
-                    <div class="text-center">
-                        <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
-                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Contact me</a>
-                    </div>
-                </div>
-            </section>
-        </main>
-        <!-- Footer-->
-        <footer class="bg-white py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0">Copyright &copy; Your Website 2023</div></div>
-                    <div class="col-auto">
-                        <a class="small" href="#!">Privacy</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="#!">Terms</a>
-                        <span class="mx-1">&middot;</span>
-                        <a class="small" href="#!">Contact</a>
-                    </div>
-                </div>
+              </div>
+
             </div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white py-4 mt-auto">
+      <div class="container px-5">
+        <div class="row justify-content-between">
+          <div class="col-auto text-muted small">© 2026 Ryusei Kitagawa</div>
+          <div class="col-auto">
+            <a href="https://github.com/ryusei-kitagawa" target="_blank" class="text-muted me-3" rel="noopener">
+              <i class="bi bi-github"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
