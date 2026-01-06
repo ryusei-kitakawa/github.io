@@ -102,6 +102,46 @@
 
                   <!-- Evidence / Screenshots -->
                   <h4 class="fw-bolder mb-3">成果物</h4>
+
+                  <hr class="my-5" />
+
+                  <!-- 攻撃一覧 -->
+                  <h4 class="fw-bolder mb-3">攻撃一覧（SSH）</h4>
+                  <p class="text-muted mb-4">
+                    Cowrie Honeypot により観測された SSH に対する攻撃を、
+                    攻撃内容ごとに分類して一覧化しました。
+                    </p>
+
+                    <div class="table-responsive">
+                    <table class="table table-bordered align-middle">
+                    <thead class="table-light">
+                    <tr>
+                      <th>攻撃種別</th>
+                      <th>概要</th>
+                      <th>観測内容</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>ブルートフォース攻撃</td>
+                      <td>ユーザ名・パスワードを大量に試行する攻撃</td>
+                      <td>複数のIPから短時間に多数の認証失敗を確認</td>
+                    </tr>
+                    <tr>
+                      <td>辞書攻撃</td>
+                      <td>よく使われる認証情報を用いたログイン試行</td>
+                      <td>root / admin / test などのユーザ名が繰り返し使用された</td>
+                    </tr>
+                    <tr>
+                      <td>侵入後コマンド実行</td>
+                      <td>侵入成功後にコマンド実行を試みる挙動</td>
+                      <td>wget / curl / sh などの実行を試みるログを確認</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    </div>
+
+                  
                   <p class="text-muted">
                     ※スクショを置く場所です。画像を用意したら <code>assets/</code> に入れてパスを書き換えるだけでOK。
                   </p>
