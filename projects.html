@@ -38,7 +38,9 @@
       <header class="py-5">
         <div class="container px-5 mb-5">
           <div class="text-center">
-            <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">プロジェクト</h1>
+            <h1 class="display-5 fw-bolder mb-0">
+              <span class="text-gradient d-inline">プロジェクト</span>
+            </h1>
             <p class="lead text-muted mt-3 mb-0">
               実攻撃ログをもとに、分析 → 可視化 → 検知（SPL）まで落とし込むことを重視しています。
             </p>
@@ -50,8 +52,8 @@
       <section class="pb-5">
         <div class="container px-5">
           <div class="row gx-5 justify-content-center">
-            <div class="col-lg-10 col-xl-9 col-xxl-8">
-
+            <!-- 幅を少し広げる（全幅にし過ぎず見やすい） -->
+            <div class="col-12 col-xl-11 col-xxl-10">
               <!-- Featured Project -->
               <div class="card shadow border-0 rounded-4 mb-5">
                 <div class="card-body p-5">
@@ -65,13 +67,14 @@
                     “攻撃の手法”だけでなく“目的”に注目し、再現性のある分析に落とし込みます。
                   </p>
 
+                  <!-- データセット概要 -->
                   <div class="mb-4">
-                  <h4 class="fw-bolder mb-2">データセット設定概要</h4>
-                  <p class="text-muted mb-0">
-                    2026年1月4日から1月6日までの約3日間、GCP上に構築した Cowrie Honeypot を稼働させ、
-                    SSH に関する実攻撃ログを収集・分析しました。
-                    その結果、約2,700件の攻撃イベントを解析しました。
-                  </p>
+                    <h4 class="fw-bolder mb-2">データセット概要</h4>
+                    <p class="text-muted mb-0">
+                      2026年1月4日から1月6日までの約3日間、GCP上に構築した Cowrie Honeypot を稼働させ、
+                      SSH に関する実攻撃ログを収集・分析しました。
+                      その結果、約2,700件の攻撃イベントを観測しました。
+                    </p>
                   </div>
 
                   <!-- Project Summary -->
@@ -80,8 +83,8 @@
                       <div class="p-4 bg-light rounded-4 h-100">
                         <h5 class="fw-bolder">目的</h5>
                         <ul class="text-muted mb-0">
-                          <li>実攻撃ログの収集と傾向分析<br>時間帯 / 攻撃元 / 試行内容）</li>
-                          <li>検知に使えるSPLの作成<br>（可視化・ランキング・異常検知）</li>
+                          <li>実攻撃ログの収集と傾向分析（時間帯 / 攻撃元 / 試行内容）</li>
+                          <li>検知に使えるSPLの作成（可視化・ランキング・異常検知）</li>
                           <li>成果物としてダッシュボード化</li>
                         </ul>
                       </div>
@@ -103,81 +106,108 @@
                   <!-- Evidence / Screenshots -->
                   <h4 class="fw-bolder mb-3">成果物</h4>
 
-                  <hr class="my-5" />
-
-                  <!-- 攻撃一覧 -->
-                  <h4 class="fw-bolder mb-3">攻撃一覧（SSH）</h4>
+                  <!-- 攻撃一覧（全幅表示） -->
+                  <h4 class="fw-bolder mt-4 mb-3">攻撃一覧（SSH）</h4>
                   <p class="text-muted mb-4">
-                    Cowrie Honeypot により観測された SSH に対する攻撃を、
-                    攻撃内容ごとに分類して一覧化しました。
-                    </p>
-
-                    <div class="table-responsive">
-                    <table class="table table-bordered align-middle">
-                    <thead class="table-light">
-                    <tr>
-                      <th>攻撃種別</th>
-                      <th>概要</th>
-                      <th class="text-end">件数</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td>SSH接続スキャン</td>
-                      <td>SSHポートへの接続可否を確認する偵察</td>
-                      <td class="text-end">1,057</td>
-                    </tr>
-                    <tr>
-                      <td>セッション終了</td>
-                      <td>接続後すぐに切断されたセッション</td>
-                      <td class="text-end">485</td>
-                    </tr>
-                    <tr>
-                      <td>SSHブルートフォース（認証失敗）</td>
-                      <td>ユーザ名・パスワードを大量に試行する攻撃</td>
-                      <td class="text-end">417</td>
-                    </tr>
-                    <tr>
-                      <td>その他</td>
-                      <td>上記に分類できないイベント</td>
-                      <td class="text-end">265</td>
-                    </tr>
-                    <tr>
-                      <td>SSH侵入成功</td>
-                      <td>認証成功によりセッションが確立</td>
-                      <td class="text-end">209</td>
-                    </tr>
-                     <tr>
-                      <td>マルウェアダウンロード</td>
-                      <td>wget/curl等で外部からファイル取得を試行</td>
-                      <td class="text-end">18</td>
-                    </tr>
-                    <tr>
-                      <td>侵入後コマンド実行</td>
-                      <td>侵入後にコマンド実行を試行</td>
-                      <td class="text-end">12</td>
-                    </tr>
-                    <td>不正ファイルアップロード</td>
-                      <td>不正なファイル転送を試行</td>
-                      <td class="text-end">1</td>
-                    </tr>
-                    </tbody>
-                    </table>
-                    </div>
-
-                  <p class="small text-muted mt-2 mb-0">
-                    ※ Splunk上で <code>attack_type</code> ごとに集計した結果です。
+                    Cowrie Honeypot により観測された SSH に対する攻撃を、<code>attack_type</code> ごとに分類し件数を集計しました。
+                    偵察（スキャン）や認証試行が多い一方で、侵入成功後の挙動（マルウェア取得・コマンド実行）も一部確認されています。
                   </p>
 
-                      <div class="row g-4">
-                        <div class="col-md-6">ダッシュボード（攻撃一覧 / 推移）</p>
-                        <img src="assets/attack_type.png" class="img-fluid rounded-3" alt="Splunk dashboard screenshot">
+                  <div class="table-responsive">
+                    <table class="table table-bordered align-middle w-100 mb-0">
+                      <thead class="table-light">
+                        <tr>
+                          <th>攻撃種別（attack_type）</th>
+                          <th>概要</th>
+                          <th class="text-end">件数（total）</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>SSH接続スキャン</td>
+                          <td>SSHポートへの接続可否を確認する偵察</td>
+                          <td class="text-end">1,057</td>
+                        </tr>
+                        <tr>
+                          <td>セッション終了</td>
+                          <td>接続後すぐに切断されたセッション</td>
+                          <td class="text-end">485</td>
+                        </tr>
+                        <tr>
+                          <td>SSHブルートフォース（認証失敗）</td>
+                          <td>ユーザ名・パスワードを大量に試行する攻撃</td>
+                          <td class="text-end">417</td>
+                        </tr>
+                        <tr>
+                          <td>SSH鍵交換（偵察）</td>
+                          <td>鍵交換まで行いサーバ情報を確認する挙動</td>
+                          <td class="text-end">282</td>
+                        </tr>
+                        <tr>
+                          <td>その他</td>
+                          <td>上記に分類できないイベント</td>
+                          <td class="text-end">265</td>
+                        </tr>
+                        <tr>
+                          <td>SSH侵入成功</td>
+                          <td>認証成功によりセッションが確立</td>
+                          <td class="text-end">209</td>
+                        </tr>
+                        <tr>
+                          <td>マルウェアダウンロード</td>
+                          <td>wget/curl等で外部からファイル取得を試行</td>
+                          <td class="text-end">18</td>
+                        </tr>
+                        <tr>
+                          <td>侵入後コマンド実行</td>
+                          <td>侵入後にコマンド実行を試行</td>
+                          <td class="text-end">12</td>
+                        </tr>
+                        <tr>
+                          <td>不正ファイルアップロード</td>
+                          <td>不正なファイル転送を試行</td>
+                          <td class="text-end">1</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <p class="small text-muted mt-2 mb-0">
+                    ※ Splunk上で <code>attack_type</code> ごとに集計した結果です（表示期間：2026/01/04〜2026/01/06）。
+                  </p>
+
+                  <hr class="my-5" />
+
+                  <!-- スクショ（2カラム） -->
+                  <p class="text-muted">
+                    ※スクショを置く場所です。画像を用意したら <code>assets/</code> に入れてパスを書き換えるだけでOK。
+                  </p>
+
+                  <div class="row g-4">
+                    <div class="col-md-6">
+                      <div class="border rounded-4 bg-white p-3 h-100">
+                        <p class="small text-muted mb-2">ダッシュボード（攻撃一覧 / 推移）</p>
+                        <img
+                          src="assets/attack_type.png"
+                          class="img-fluid rounded-3"
+                          alt="Splunk dashboard screenshot"
+                        />
+                        <p class="small text-muted mt-2 mb-0">
+                          画像ファイル例：<code>assets/project-cowrie-dashboard.png</code>
+                        </p>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="border rounded-4 bg-white p-3 h-100">
                         <p class="small text-muted mb-2">システム構成図</p>
-                        <img src="assets/project-architecture.png" class="img-fluid rounded-3" alt="architecture diagram">
+                        <img
+                          src="assets/project-architecture.png"
+                          class="img-fluid rounded-3"
+                          alt="architecture diagram"
+                        />
+                        <p class="small text-muted mt-2 mb-0">
+                          画像ファイル例：<code>assets/project-architecture.png</code>
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -187,46 +217,53 @@
                   <!-- Findings -->
                   <h4 class="fw-bolder mb-3">主な分析結果</h4>
                   <ul class="text-muted">
-                    <li>攻撃元IPの上位は特定の時間帯に集中し、短時間のスパイクが発生</li>
-                    <li>ユーザ名・パスワード試行は辞書型のパターンが多く、同一セットが繰り返される</li>
-                    <li>侵入後は <code>wget/curl</code> 系のコマンドやシェル実行を狙う試行が見られる（※観測できた場合に記載）</li>
+                    <li>攻撃の多くは偵察（SSH接続スキャン）と認証試行（ブルートフォース）に集中</li>
+                    <li>短期間でもSSH侵入成功（209件）が観測され、侵入後の挙動（コマンド実行・ダウンロード）も一部確認</li>
+                    <li>ユーザ名・パスワード試行は辞書型のパターンが多く、同一セットが繰り返される傾向</li>
                   </ul>
 
                   <hr class="my-5" />
 
                   <!-- SPL -->
                   <h4 class="fw-bolder mb-3">検知用SPL（抜粋）</h4>
-                  <p class="text-muted mb-4">
-                    説明付きでSPLを載せると“分かってる感”が出ます。まずは3本で十分です。
-                  </p>
+                  <p class="text-muted mb-4">説明付きでSPLを載せると“分かってる感”が出ます。まずは3本で十分です。</p>
 
                   <div class="mb-4">
                     <p class="fw-bolder mb-2">1) 日別の攻撃イベント推移</p>
-                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=YOUR_INDEX sourcetype=YOUR_COWRIE_SOURCETYPE
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype=cowrie:json
 | timechart span=1d count as events</code></pre>
+                    <p class="small text-muted mt-2 mb-0">日別にイベント数を集計し、攻撃の増減（スパイク）を可視化します。</p>
                   </div>
 
                   <div class="mb-4">
                     <p class="fw-bolder mb-2">2) 攻撃元IP Top 20</p>
-                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=YOUR_INDEX sourcetype=YOUR_COWRIE_SOURCETYPE
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype=cowrie:json
 | stats count as events by src_ip
 | sort - events
 | head 20</code></pre>
+                    <p class="small text-muted mt-2 mb-0">攻撃元IPの上位を抽出し、偏りや継続的な攻撃元を把握します。</p>
                   </div>
 
                   <div class="mb-4">
                     <p class="fw-bolder mb-2">3) 侵入後コマンド（観測できる場合）</p>
-                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=YOUR_INDEX sourcetype=YOUR_COWRIE_SOURCETYPE eventid="cowrie.command.input"
-                                                                              | stats count as hits by input
-                                                                              | sort - hits
-                                                                              | head 30</code></pre>
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype=cowrie:json eventid="cowrie.command.input"
+| stats count as hits by input
+| sort - hits
+| head 30</code></pre>
+                    <p class="small text-muted mt-2 mb-0">侵入後に入力されたコマンドを集計し、目的（ダウンロード/展開/永続化）の推定に使います。</p>
                   </div>
 
                   <hr class="my-5" />
+
                   <!-- Links -->
                   <h4 class="fw-bolder mb-3">再現手順・関連リンク</h4>
                   <ul class="text-muted mb-0">
-                    <li>GitHub（手順・構成・SPLまとめ）：<a href="https://github.com/ryusei-kitagawa" target="_blank" rel="noopener">https://github.com/ryusei-kitagawa</a></li>
+                    <li>
+                      GitHub（手順・構成・SPLまとめ）：
+                      <a href="https://github.com/ryusei-kitagawa" target="_blank" rel="noopener"
+                        >https://github.com/ryusei-kitagawa</a
+                      >
+                    </li>
                     <li>データの扱い：攻撃元IP等は必要に応じてマスクして共有</li>
                     <li>今後：Suricata連携、GeoIPで国別傾向、アラート化（Saved Search）</li>
                   </ul>
@@ -242,7 +279,6 @@
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
