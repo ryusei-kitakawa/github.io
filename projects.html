@@ -66,11 +66,11 @@
                   </p>
 
                   <div class="mb-4">
-                  <h4 class="fw-bolder mb-2">データ設定概要</h4>
+                  <h4 class="fw-bolder mb-2">データセット設定概要</h4>
                   <p class="text-muted mb-0">
                     2026年1月4日から1月6日までの約3日間、GCP上に構築した Cowrie Honeypot を稼働させ、
                     SSH に関する実攻撃ログを収集・分析しました。
-                    その結果、約2,700件の攻撃イベントを解析を行いました。
+                    その結果、約2,700件の攻撃イベントを解析しました。
                   </p>
                   </div>
 
@@ -118,29 +118,56 @@
                     <tr>
                       <th>攻撃種別</th>
                       <th>概要</th>
-                      <th>観測内容</th>
+                      <th class="text-end">件数</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                      <td>ブルートフォース攻撃</td>
-                      <td>ユーザ名・パスワードを大量に試行する攻撃</td>
-                      <td>複数のIPから短時間に多数の認証失敗を確認</td>
+                      <td>>SSH接続スキャン</td>
+                      <td>SSHポートへの接続可否を確認する偵察</td>
+                      <td class="text-end">1,057</td>
                     </tr>
                     <tr>
-                      <td>辞書攻撃</td>
-                      <td>よく使われる認証情報を用いたログイン試行</td>
-                      <td>root / admin / test などのユーザ名が繰り返し使用された</td>
+                      <td>セッション終了</td>
+                      <td>接続後すぐに切断されたセッション<td>
+                      <td class="text-end">485</td>
+                    </tr>
+                    <tr>
+                      <td>SSHブルートフォース（認証失敗）</td>
+                      <td>ユーザ名・パスワードを大量に試行する攻撃</td>
+                      <td class="text-end">417</td>
+                    </tr>
+                    <tr>
+                      <td>その他</td>
+                      <td>上記に分類できないイベント</td>
+                      <td class="text-end">265</td>
+                    </tr>
+                    <tr>
+                      <td>SSH侵入成功</td>
+                      <td>認証成功によりセッションが確立</td>
+                      <td class="text-end">209</td>
+                    </tr>
+                     <tr>
+                      <td>マルウェアダウンロード</td>
+                      <td>wget/curl等で外部からファイル取得を試行</td>
+                      <td class="text-end">18</td>
                     </tr>
                     <tr>
                       <td>侵入後コマンド実行</td>
-                      <td>侵入成功後にコマンド実行を試みる挙動</td>
-                      <td>wget / curl / sh などの実行を試みるログを確認</td>
+                      <td>侵入後にコマンド実行を試行</td>
+                      <td class="text-end">12</td>
+                    </tr>
+                    <td>不正ファイルアップロード</td>
+                      <td>不正なファイル転送を試行</td>
+                      <td class="text-end">1</td>
                     </tr>
                     </tbody>
                     </table>
                     </div>
 
+                  <p class="small text-muted mt-2 mb-0">
+                    ※ Splunk上で <code>attack_type</code> ごとに集計した結果です。
+                  </p>
                   
                   <p class="text-muted">
                     ※スクショを置く場所です。画像を用意したら <code>assets/</code> に入れてパスを書き換えるだけでOK。
