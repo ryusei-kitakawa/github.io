@@ -52,7 +52,6 @@
       <section class="pb-5">
         <div class="container px-5">
           <div class="row gx-5 justify-content-center">
-            <!-- 幅を少し広げる（全幅にし過ぎず見やすい） -->
             <div class="col-12 col-xl-11 col-xxl-10">
               <!-- Featured Project -->
               <div class="card shadow border-0 rounded-4 mb-5">
@@ -72,8 +71,7 @@
                     <h4 class="fw-bolder mb-2">データセット概要</h4>
                     <p class="text-muted mb-0">
                       2026年1月4日から1月6日までの約3日間、GCP上に構築した Cowrie Honeypot を稼働させ、
-                      SSH に関する実攻撃ログを収集・分析しました。
-                      その結果、約2,700件の攻撃イベントを観測しました。
+                      SSH に関する実攻撃ログを収集・分析しました。 その結果、約2,700件の攻撃イベントを観測しました。
                     </p>
                   </div>
 
@@ -101,12 +99,10 @@
                     </div>
                   </div>
 
-                  <hr class="my-5" />
+                  <!-- 成果物 -->
+                  <h4 class="fw-bolder mt-5 mb-3">成果物</h4>
 
-                  <!-- Evidence / Screenshots -->
-                  <h4 class="fw-bolder mb-3">成果物</h4>
-
-                  <!-- 攻撃一覧（全幅表示） -->
+                  <!-- 攻撃一覧 -->
                   <h4 class="fw-bolder mt-4 mb-3">攻撃一覧（SSH）</h4>
                   <p class="text-muted mb-4">
                     Cowrie Honeypot により観測された SSH に対する攻撃を、<code>attack_type</code> ごとに分類し件数を集計しました。
@@ -176,14 +172,12 @@
                     ※ Splunk上で <code>attack_type</code> ごとに集計した結果です（表示期間：2026/01/04〜2026/01/06）。
                   </p>
 
-                  <hr class="my-5" />
-
-                  <!-- スクショ（2カラム） -->
-                  <p class="text-muted">
+                  <!-- スクショ -->
+                  <p class="text-muted mt-5">
                     ※スクショを置く場所です。画像を用意したら <code>assets/</code> に入れてパスを書き換えるだけでOK。
                   </p>
 
-                  <div class="row g-4">
+                  <div class="row g-4 mt-2">
                     <div class="col-md-6">
                       <div class="border rounded-4 bg-white p-3 h-100">
                         <p class="small text-muted mb-2">ダッシュボード（攻撃一覧 / 推移）</p>
@@ -212,20 +206,16 @@
                     </div>
                   </div>
 
-                  <hr class="my-5" />
-
                   <!-- Findings -->
-                  <h4 class="fw-bolder mb-3">主な分析結果</h4>
+                  <h4 class="fw-bolder mt-5 mb-3">主な分析結果</h4>
                   <ul class="text-muted">
                     <li>攻撃の多くは偵察（SSH接続スキャン）と認証試行（ブルートフォース）に集中</li>
                     <li>短期間でもSSH侵入成功（209件）が観測され、侵入後の挙動（コマンド実行・ダウンロード）も一部確認</li>
                     <li>ユーザ名・パスワード試行は辞書型のパターンが多く、同一セットが繰り返される傾向</li>
                   </ul>
 
-                  <hr class="my-5" />
-
                   <!-- SPL -->
-                  <h4 class="fw-bolder mb-3">検知用SPL（抜粋）</h4>
+                  <h4 class="fw-bolder mt-5 mb-3">検知用SPL（抜粋）</h4>
                   <p class="text-muted mb-4">説明付きでSPLを載せると“分かってる感”が出ます。まずは3本で十分です。</p>
 
                   <div class="mb-4">
@@ -253,10 +243,8 @@
                     <p class="small text-muted mt-2 mb-0">侵入後に入力されたコマンドを集計し、目的（ダウンロード/展開/永続化）の推定に使います。</p>
                   </div>
 
-                  <hr class="my-5" />
-
                   <!-- Links -->
-                  <h4 class="fw-bolder mb-3">再現手順・関連リンク</h4>
+                  <h4 class="fw-bolder mt-5 mb-3">再現手順・関連リンク</h4>
                   <ul class="text-muted mb-0">
                     <li>
                       GitHub（手順・構成・SPLまとめ）：
@@ -270,7 +258,7 @@
                 </div>
               </div>
 
-              <!-- Coming soon / Next projects -->
+              <!-- Next -->
               <div class="card shadow border-0 rounded-4">
                 <div class="card-body p-5">
                   <h2 class="fw-bolder mb-3">今後の展開</h2>
