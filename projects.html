@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
@@ -178,29 +178,37 @@
 
                   <hr class="my-5" />
 
+                  <!-- スクショ（2カラム） -->
+                  <p class="text-muted">
+                    ※スクショを置く場所です。画像を用意したら <code>assets/</code> に入れてパスを書き換えるだけでOK。
+                  </p>
+
                   <div class="row g-4">
                     <div class="col-md-6">
-                   <!-- ダッシュボード：全幅表示 -->
-                  　<div class="mb-5">
-                    <p class="small text-muted mb-2">ダッシュボード（攻撃一覧 / 推移）</p>
-                    <div class="border rounded-4 bg-white p-3 w-100">
-                      <img
-                        src="assets/attack_type.png"
-                        class="w-100 rounded-3"
-                        alt="Splunk dashboard screenshot"
-                      >
-                  </div>
-                </div>
-
-                <!-- システム構成図：下に表示 -->
-                <div class="mb-4">
-                  <p class="small text-muted mb-2">システム構成図</p>
-                  <div class="border rounded-4 bg-white p-3">
-                      <img
-                        src="assets/project-architecture.png"
-                        class="img-fluid rounded-3"
-                        alt="architecture diagram"
-                      >
+                      <div class="border rounded-4 bg-white p-3 h-100">
+                        <p class="small text-muted mb-2">ダッシュボード（攻撃一覧 / 推移）</p>
+                        <img
+                          src="assets/project-cowrie-dashboard.png"
+                          class="img-fluid rounded-3"
+                          alt="Splunk dashboard screenshot"
+                        />
+                        <p class="small text-muted mt-2 mb-0">
+                          画像ファイル例：<code>assets/project-cowrie-dashboard.png</code>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="border rounded-4 bg-white p-3 h-100">
+                        <p class="small text-muted mb-2">システム構成図</p>
+                        <img
+                          src="assets/project-architecture.png"
+                          class="img-fluid rounded-3"
+                          alt="architecture diagram"
+                        />
+                        <p class="small text-muted mt-2 mb-0">
+                          画像ファイル例：<code>assets/project-architecture.png</code>
+                        </p>
+                      </div>
                     </div>
                   </div>
 
@@ -252,8 +260,8 @@
                   <ul class="text-muted mb-0">
                     <li>
                       GitHub（手順・構成・SPLまとめ）：
-                      <a href="https://github.com/ryusei-kitakawa" target="_blank" rel="noopener"
-                        >https://github.com/ryusei-kitakawa</a
+                      <a href="https://github.com/ryusei-kitagawa" target="_blank" rel="noopener"
+                        >https://github.com/ryusei-kitagawa</a
                       >
                     </li>
                     <li>データの扱い：攻撃元IP等は必要に応じてマスクして共有</li>
@@ -280,9 +288,9 @@
     <footer class="bg-white py-4 mt-auto">
       <div class="container px-5">
         <div class="row justify-content-between">
-          <div class="col-auto text-muted small">© 2026 Ryusei Kitakawa</div>
+          <div class="col-auto text-muted small">© 2026 Ryusei Kitagawa</div>
           <div class="col-auto">
-            <a href="https://github.com/ryusei-kitakawa" target="_blank" class="text-muted me-3" rel="noopener">
+            <a href="https://github.com/ryusei-kitagawa" target="_blank" class="text-muted me-3" rel="noopener">
               <i class="bi bi-github"></i>
             </a>
           </div>
