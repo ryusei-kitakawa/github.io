@@ -168,7 +168,8 @@
                   </div>
 
                   <p class="small text-muted mt-2 mb-0">
-                    ※ Splunk上で <code>attack_type</code> ごとに集計した結果です（表示期間：2026/01/04〜2026/01/06）。
+                    ※ Splunk上で <code>attack_type</code> ごとに集計した結果です（表示期間：2026/01/04〜2026/01/06）
+                    上記の分析結果は、以下のSPLで eventid を攻撃種別に分類・集計した結果に基づきます。
                   </p>
                   <h4 class="fw-bolder mb-2">SPL</h4>
                   <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json" 
@@ -215,6 +216,7 @@
                   <ul class="text-muted">
                     <li>3日間で約2,700件のSSH関連の攻撃を観測し、そのうちSSH接続スキャンが1,057件（約40%）を占めました。まず偵察を行い、その後に認証試行（ブルートフォース）が続く傾向が見られました。（attck_type集計より）</li>
                     <li>認証成功に相当するイベントが209件観測され、さらに一部のセッションでは侵入後の操作（外部ファイル取得、コマンド実行、不正アップロード）が確認できました。</li>
+                    <li></li>
                   </ul>
 
                   <!-- SPL -->
