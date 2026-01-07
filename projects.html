@@ -206,7 +206,7 @@
                   <h4 class="fw-bolder mt-5 mb-3">分析に用いたSPL（抜粋）</h4>
 
                   <div class="mb-4">
-                    <p class="fw-bolder mb-2">1) 日別の攻撃イベント推移</p>
+                    <p class="fw-bolder mb-2">1) 攻撃一覧</p>
                     <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json" 
 | eval attack_type=case(
     eventid=="cowrie.login.failed","SSHブルートフォース（認証失敗）",
