@@ -207,8 +207,20 @@
 
                   <div class="mb-4">
                     <p class="fw-bolder mb-2">1) 日別の攻撃イベント推移</p>
-                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype=cowrie:json
-| timechart span=1d count as events</code></pre>
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json" 
+| eval attack_type=case(
+    eventid=="cowrie.login.failed","SSHブルートフォース（認証失敗）",
+    eventid=="cowrie.login.success","SSH侵入成功",
+    eventid=="cowrie.session.connect","SSH接続スキャン",
+    eventid=="cowrie.client.kex","SSH鍵交換（偵察）",
+    eventid=="cowrie.command.input","侵入後コマンド実行",
+    eventid=="cowrie.session.file_download","マルウェアダウンロード",
+    eventid=="cowrie.session.file_upload","不正ファイルアップロード",
+    eventid=="cowrie.session.closed","セッション終了",
+    true(),"その他"
+)
+| stats count as total by attack_type
+| sort - total</code></pre>
                     <p class="small text-muted mt-2 mb-0">日別にイベント数を集計し、攻撃の増減（スパイク）を可視化します。</p>
                   </div>
 
