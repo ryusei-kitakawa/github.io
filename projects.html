@@ -262,7 +262,7 @@
                     </div>
                   </div>
                     
-                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype=cowrie:json　eventid=cowrie.login.failed
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json"　eventid="cowrie.login.failed"
 | stats count as try_count by (username or password)
 | sort - try_count
 | head 5</code></pre>
