@@ -40,9 +40,6 @@
             <h1 class="display-5 fw-bolder mb-0">
               <span class="text-gradient d-inline">プロジェクト</span>
             </h1>
-            <p class="lead text-muted mt-3 mb-0">
-              実攻撃ログをもとに、分析 → 可視化 → 検知（SPL）まで落とし込むことを重視しています。
-            </p>
           </div>
         </div>
       </header>
@@ -57,20 +54,15 @@
                 <div class="card-body p-5">
                   <div class="d-flex align-items-center mb-3">
                     <span class="badge bg-primary me-2">注目プロジェクト</span>
-                    <h2 class="fw-bolder mb-0">Cowrie Honeypot × Splunk 攻撃ログ分析</h2>
+                    <h2 class="fw-bolder mb-0">Cowrie Honeypot × Suricata × Splunk 攻撃ログ分析</h2>
                   </div>
-
-                  <p class="text-muted mb-4">
-                    GCP上のCowrieで収集したSSH/Telnet攻撃ログをSplunkに集約し、攻撃傾向の可視化と検知クエリ（SPL）を作成しました。
-                    “攻撃の手法”だけでなく“目的”に注目し、再現性のある分析に落とし込みます。
-                  </p>
-
+                  
                   <!-- データセット概要 -->
                   <div class="mb-4">
                     <h4 class="fw-bolder mb-2">データセット概要</h4>
                     <p class="text-muted mb-0">
-                      2026年1月4日から1月6日までの約3日間、GCP上に構築した Cowrie Honeypot を稼働させ、
-                      SSH に関する実攻撃ログを収集・分析しました。 その結果、約2,700件の攻撃イベントを観測しました。
+                      2026年1月4日から1月6日までの約3日間、GCP上に構築した Cowrie Honeypot を稼働させ、Suricataを導入し、
+                      SSH に関する実攻撃ログを収集・分析しました。 その結果、約2,700件の攻撃ログを観測しました。
                     </p>
                   </div>
 
@@ -80,9 +72,8 @@
                       <div class="p-4 bg-light rounded-4 h-100">
                         <h5 class="fw-bolder">目的</h5>
                         <ul class="text-muted mb-0">
-                          <li>実攻撃ログの収集と傾向分析（時間帯 / 攻撃元 / 試行内容）</li>
-                          <li>検知に使えるSPLの作成（可視化・ランキング・異常検知）</li>
-                          <li>成果物としてダッシュボード化</li>
+                          <li>実攻撃ログの収集と傾向分析（攻撃元 / 試行方法）</li>
+                          <li>検知に使えるSPLの作成（可視化・ランキング）</li>
                         </ul>
                       </div>
                     </div>
@@ -91,6 +82,7 @@
                         <h5 class="fw-bolder">構成</h5>
                         <ul class="text-muted mb-0">
                           <li>Honeypot：Cowrie（GCP）</li>
+                          <li>IDS:Suricata</li>
                           <li>転送：Universal Forwarder</li>
                           <li>分析：Splunk Enterprise（Dashboard / SPL）</li>
                         </ul>
@@ -105,7 +97,7 @@
                   <h4 class="fw-bolder mt-4 mb-3">攻撃一覧（SSH）</h4>
                   <p class="text-muted mb-4">
                     Cowrie Honeypot により観測された SSH に対する攻撃を、<code>attack_type</code> ごとに分類し件数を集計しました。
-                    偵察（スキャン）や認証試行が多い一方で、侵入成功後の挙動（マルウェア取得・コマンド実行）も一部確認されています。
+                    偵察（スキャン）や認証試行が多い一方で、侵入成功後の挙動（マルウェア取得・コマンド実行）も一部確認できました。
                   </p>
 
                   <div class="table-responsive">
@@ -191,7 +183,7 @@
                   <div class="row g-4 mt-2">
                     <div class="col-md-6">
                       <div class="border rounded-4 bg-white p-3 h-100">
-                        <p class="small text-muted mb-2">ダッシュボード（攻撃一覧 / 推移）</p>
+                        <p class="small text-muted mb-2">ダッシュボード（攻撃一覧）</p>
                         <img
                           src="assets/attack_type.png"
                           class="img-fluid rounded-3"
@@ -232,7 +224,7 @@
 | stats count as attack_count by Country
 | sort - attack_count
 | head 5</pre>
-                    <p class="small text-muted mt-2 mb-0">観測できた約2,700件がどこからされたのかを国別でTOP5を調べました。しかし、BOTや踏み台サーバにされている可能性もあるため、大本の攻撃者の国かどうかは今回は判断できておりません。</p>
+                    <p class="small text-muted mt-2 mb-0">観測できた約2,700件がどこからされたのかを国別でTOP5を調べました。しかし、BOTや踏み台サーバからされている可能性もあるため、大本の攻撃者の国かどうかは今回は判断できておりません。</p>
                   </div>
 
                   <div class="mb-4">
