@@ -237,16 +237,16 @@
 
                   <div class="mb-4">
                     <p class="fw-bolder mb-2">2) ブルートフォースで使われたユーザネームとパスワード</p>
-                     <p class="small text-muted mt-2 mb-0">ユーザネームとパスワードは別々で試行回数のランキングを作りました。<br>まずは、ユーザネームからです。</p>
+                     <p class="small text-muted mt-2 mb-0">ユーザネームとパスワードは別々で試行回数のランキングを作りました。<br>まずはユーザネームからです。</p>
                       <img
-                          src="assets/country.png"
+                          src="assets/username.png"
                           class="img-fluid rounded-3"
-                          alt="国別攻撃元ランキング"
+                          alt="試行回数が多かったユーザネーム"
                         />
-                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype=cowrie:json
-| stats count as events by src_ip
-| sort - events
-| head 20</code></pre>
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype=cowrie:json　eventid=cowrie.login.failed
+| stats count as try_count
+| sort - try_count
+| head 5</code></pre>
                     <p class="small text-muted mt-2 mb-0">攻撃元IPの上位を抽出し、偏りや継続的な攻撃元を把握します。</p>
                   </div>
 
