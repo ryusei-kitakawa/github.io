@@ -283,6 +283,18 @@
 | stats avg(diff) as avg_interval, min(diff) as min_interval by src_ip
 | sort avg_interval</code></pre>
                     <p class="small text-muted mt-2 mb-0">avg_intervalが小さいほど自動で試行している可能性が高くなるので、今回は0になっているものに焦点を当てて調べていきます。</p>
+                      <img
+                          src="assets/avg_min.png"
+                          class="img-fluid rounded-3"
+                          alt="平均と最小"
+                        />
+                       <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json" eventid="cowrie.login.failed"
+| sort src_ip _time
+| streamstats current=f last(_time) as prev_time by src_ip
+| eval diff = _time - prev_time
+| stats avg(diff) as avg_interval, min(diff) as min_interval, count as try_count by src_ip
+| where avg_interval=0 and min_interval=0
+| sort try_count</code></pre>
                   </div>
 
                   <!-- Links -->
