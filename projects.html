@@ -252,7 +252,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="border rounded-4 bg-white p-3 h-100">
-                        <p class="small text-muted mb-2">システム構成図</p>
+                        <p class="small text-muted mb-2">試行回数ランキング（パスワード版）</p>
                         <img
                           src="assets/password.png"
                           class="img-fluid rounded-3"
@@ -263,7 +263,7 @@
                   </div>
                     
                     <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype=cowrie:json　eventid=cowrie.login.failed
-| stats count as try_count
+| stats count as try_count by (username or password)
 | sort - try_count
 | head 5</code></pre>
                     <p class="small text-muted mt-2 mb-0">攻撃元IPの上位を抽出し、偏りや継続的な攻撃元を把握します。</p>
