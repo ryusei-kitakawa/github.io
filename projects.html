@@ -266,7 +266,7 @@
 | stats count as try_count by (username or password)
 | sort - try_count
 | head 5</code></pre>
-                    <p class="small text-muted mt-2 mb-0">攻撃元IPの上位を抽出し、偏りや継続的な攻撃元を把握します。</p>
+                    <p class="small text-muted mt-2 mb-0">ユーザネームとパスワードの試行された単語を見ると、生成AIの名前やadmin、rootといった初期のユーザネームが上位に入っていました。そのため、辞書攻撃の可能性が高いと思われます。しかし、ランダムに見える英数字列の入力も見られたため、過去に情報漏洩したパスワードだったり、特定のマルウェアまたはボットによる自動化された認証試行である可能性もある。</p>
                   </div>
 
                   <div class="mb-4">
