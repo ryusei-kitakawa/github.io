@@ -219,7 +219,7 @@
                           class="img-fluid rounded-3"
                           alt="国別攻撃元ランキング"
                         />
-                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code></code>index=* cowrie
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code></code>index=* sourcetype="cowrie:json"
 | iplocation src_ip
 | stats count as attack_count by Country
 | sort - attack_count
