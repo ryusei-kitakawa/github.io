@@ -237,12 +237,31 @@
 
                   <div class="mb-4">
                     <p class="fw-bolder mb-2">2) ブルートフォースで使われたユーザネームとパスワード</p>
-                     <p class="small text-muted mt-2 mb-0">ユーザネームとパスワードは別々で試行回数のランキングを作りました。<br>まずはユーザネームからです。</p>
-                      <img
+                     <p class="small text-muted mt-2 mb-0">ユーザネームとパスワードは別々で試行回数のランキングを作りました。</p>
+                    
+                       <div class="row g-4 mt-2">
+                    <div class="col-md-6">
+                      <div class="border rounded-4 bg-white p-3 h-100">
+                        <p class="small text-muted mb-2">試行回数ランキング（ユーザネーム版）</p>
+                        <img
                           src="assets/username.png"
                           class="img-fluid rounded-3"
-                          alt="試行回数が多かったユーザネーム"
+                          alt="試行回数ランキング（ユーザネーム版）"
                         />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="border rounded-4 bg-white p-3 h-100">
+                        <p class="small text-muted mb-2">システム構成図</p>
+                        <img
+                          src="assets/project-architecture.png"
+                          class="img-fluid rounded-3"
+                          alt="architecture diagram"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                    
                     <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype=cowrie:json　eventid=cowrie.login.failed
 | stats count as try_count
 | sort - try_count
