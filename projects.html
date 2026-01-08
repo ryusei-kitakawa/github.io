@@ -270,12 +270,19 @@
                   </div>
 
                   <div class="mb-4">
-                    <p class="fw-bolder mb-2">3) 侵入後コマンド（観測できる場合）</p>
-                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype=cowrie:json eventid="cowrie.command.input"
-| stats count as hits by input
-| sort - hits
-| head 30</code></pre>
-                    <p class="small text-muted mt-2 mb-0">侵入後に入力されたコマンドを集計し、目的（ダウンロード/展開/永続化）の推定に使います。</p>
+                    <p class="fw-bolder mb-2">3) 手動or自動を見分ける</p>
+                    <img
+                          src="assets/hand_auto.png"
+                          class="img-fluid rounded-3"
+                          alt="手動or自動"
+                        />
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json" eventid="cowrie.login.failed"
+| sort src_ip _time
+| streamstats current=f last(_time) as prev_time by src_ip
+| eval diff = _time - prev_time
+| stats avg(diff) as avg_interval, min(diff) as min_interval by src_ip
+| sort avg_interval</code></pre>
+                    <p class="small text-muted mt-2 mb-0">avg_intervalが小さいほど自動で試行している可能性が高くなるので、今回は0になっているものに焦点を当てて調べていきます。</p>
                   </div>
 
                   <!-- Links -->
