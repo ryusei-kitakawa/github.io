@@ -295,16 +295,13 @@
 | stats avg(diff) as avg_interval, min(diff) as min_interval, count as try_count by src_ip
 | where avg_interval=0 and min_interval=0
 | sort try_count</code></pre>
+                    <p class="small text-muted mt-2 mb-0">3つのIP全てが自動化（ボット）で認証試行が行われていると考えれます。</p>
                   </div>
 
                   <!-- Links -->
-                  <h4 class="fw-bolder mt-5 mb-3">再現手順・関連リンク</h4>
+                  <h4 class="fw-bolder mt-5 mb-3">まとめ</h4>
                   <ul class="text-muted mb-0">
-                    <li>
-                      GitHub（手順・構成・SPLまとめ）：
-                      <a href="https://github.com/ryusei-kitakawa" target="_blank" rel="noopener"
-                        >https://github.com/ryusei-kitagawa</a
-                      >
+                    <li>今回はSSH接続スキャンに的を絞って調べていきました。まだ一部しか調べ切れていないが、確実攻撃がされていることは確認できた。
                     </li>
                     <li>データの扱い：攻撃元IP等は必要に応じてマスクして共有</li>
                     <li>今後：Suricata連携、GeoIPで国別傾向、アラート化（Saved Search）</li>
