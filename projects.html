@@ -82,7 +82,7 @@
                         <h5 class="fw-bolder">構成</h5>
                         <ul class="text-muted mb-0">
                           <li>Honeypot：Cowrie（GCP）</li>
-                          <li>IDS:Suricata</li>
+                          <li>IDS：Suricata</li>
                           <li>転送：Universal Forwarder</li>
                           <li>分析：Splunk Enterprise（Dashboard / SPL）</li>
                         </ul>
@@ -206,7 +206,7 @@
                   <!-- Findings -->
                   <h4 class="fw-bolder mt-5 mb-3">主な分析結果</h4>
                   <ul class="text-muted">
-                    <li>3日間で約2,700件のSSH関連の攻撃を観測し、そのうちSSH接続スキャンが1,057件（約40%）を占めました。まず偵察を行い、その後に認証試行（ブルートフォース）が続く傾向が見られました。（attck_type集計より）</li>
+                    <li>3日間で約2,700件のSSH関連の攻撃を観測し、そのうちSSH接続スキャンが1,057件（約40%）を占めました。まず偵察を行い、その後に認証試行（ブルートフォース）が続く傾向が見られました。（attack_type集計より）</li>
                     <li>認証成功に相当するイベントが209件観測され、さらに一部のセッションでは侵入後の操作（外部ファイル取得、コマンド実行、不正アップロード）が確認できました。</li>
                   </ul>
 
@@ -219,26 +219,29 @@
                           class="img-fluid rounded-3"
                           alt="国別攻撃元ランキング"
                         />
-                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code></code>index=* sourcetype="cowrie:json"
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json"
 | iplocation src_ip
 | stats count as attack_count by Country
 | sort - attack_count
-| head 5</pre>
-                    <p class="small text-muted mt-2 mb-0">観測できた約2,700件がどこからされたのかを国別でTOP5を調べました。しかし、BOTや踏み台サーバからされている可能性もあるため、大本の攻撃者の国かどうかは今回は判断できておりません。</p>
+| head 5</code></pre>
+                    <p class="small text-muted mt-2 mb-0">
+                      攻撃元IPに対して、Splunkの<code>iplocation</code>コマンドを用いて位置情報を取得し、国別攻撃件数を集計しました。
+                    　なお踏み台サーバやクラウドサービス経由の通信も含まれるため、本分析では地理的傾向の把握を目的としています。
+                    </p>
                   </div>
 
                   <div class="mb-4">
-                    <p class="fw-bolder mb-2">2) ブルートフォースで使われたユーザネームとパスワード</p>
-                     <p class="small text-muted mt-2 mb-0">ユーザネームとパスワードは別々で試行回数のランキングを作りました。</p>
+                    <p class="fw-bolder mb-2">2) ブルートフォースで使われたユーザ名とパスワード</p>
+                     <p class="small text-muted mt-2 mb-0">ユーザ名とパスワードは別々で試行回数のランキングを作りました。</p>
                     
                        <div class="row g-4 mt-2">
                     <div class="col-md-6">
                       <div class="border rounded-4 bg-white p-3 h-100">
-                        <p class="small text-muted mb-2">試行回数ランキング（ユーザネーム版）</p>
+                        <p class="small text-muted mb-2">試行回数ランキング（ユーザ名版）</p>
                         <img
                           src="assets/username.png"
                           class="img-fluid rounded-3"
-                          alt="試行回数ランキング（ユーザネーム版）"
+                          alt="試行回数ランキング（ユーザ名版）"
                         />
                       </div>
                     </div>
@@ -255,10 +258,14 @@
                   </div>
                     
                     <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json"　eventid="cowrie.login.failed"
-| stats count as try_count by (username or password)
+| stats count as try_count by username
 | sort - try_count
 | head 5</code></pre>
-                    <p class="small text-muted mt-2 mb-0">ユーザネームとパスワードの試行された単語を見ると、生成AIの名前やadmin、rootといった初期のユーザネームが上位に入っていました。そのため、辞書攻撃の可能性が高いと思われます。しかし、ランダムに見える英数字列の入力も見られたため、過去に情報漏洩したパスワードだったり、特定のマルウェアまたはボットによる自動化された認証試行である可能性もある。</p>
+                     <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json"　eventid="cowrie.login.failed"
+| stats count as try_count by password
+| sort - try_count
+| head 5</code></pre>
+                    <p class="small text-muted mt-2 mb-0">ユーザ名とパスワードの試行された単語を見ると、生成AIの名前やadmin、rootといった初期のユーザ名が上位に入っていました。そのため、辞書攻撃の可能性が高いと思われます。しかし、ランダムに見える英数字列の入力も見られたため、過去に情報漏洩したパスワードだったり、特定のマルウェアまたはボットによる自動化された認証試行である可能性もある。</p>
                   </div>
 
                   <div class="mb-4">
@@ -287,7 +294,7 @@
 | stats avg(diff) as avg_interval, min(diff) as min_interval, count as try_count by src_ip
 | where avg_interval=0 and min_interval=0
 | sort try_count</code></pre>
-                    <p class="small text-muted mt-2 mb-0">3つのIP全てが自動化（ボット）で認証試行が行われていると考えれます。</p>
+                    <p class="small text-muted mt-2 mb-0">3つのIP全てが自動化（ボット）で認証試行が行われていると考えられます。</p>
                   </div>
 
                   <!-- Links -->
