@@ -244,6 +244,7 @@
                     <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json"
 | iplocation src_ip
 | stats count as attack_count by Country
+| where isnotnull(Country) AND Country!=""
 | sort - attack_count
 | head 5</code></pre>
                     <p class="small text-muted mt-2 mb-0">
@@ -283,11 +284,11 @@
                       <strong>意図：</strong> 辞書攻撃で利用されやすいユーザ名・パスワードの傾向を確認し、一般的な初期値（admin/root等）や流出パスワード由来の可能性を検討するための集計です。
                     </p>
   
-                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json"　eventid="cowrie.login.failed"
+                    <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json" eventid="cowrie.login.failed"
 | stats count as try_count by username
 | sort - try_count
 | head 5</code></pre>
-                     <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json"　eventid="cowrie.login.failed"
+                     <pre class="bg-dark text-white p-3 rounded-4 mb-0"><code>index=* sourcetype="cowrie:json" eventid="cowrie.login.failed"
 | stats count as try_count by password
 | sort - try_count
 | head 5</code></pre>
